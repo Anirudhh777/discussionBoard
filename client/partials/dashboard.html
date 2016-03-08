@@ -1,0 +1,55 @@
+<div ng-show="users" ng-controller="loginController"> 	
+	<h4>Welcome {{users.name}}</h4>
+      <div class="pull-right">
+            <form>
+      	 	<input type='submit' value='Logout' ng-click='logout()' class="btn btn-danger">
+      	</form>
+      </div>
+<div ng-controller="topicController">
+      <table class="table table-striped">
+            <thead>
+                  <tr>
+                        <th>Category</th>
+                        <th>Topic</th>
+                        <th>User Name</th>
+                        <th>Posts</th>
+                  </tr>
+                  <tr ng-repeat="topic in topics track by $index">
+                        <td>{{topic.category}}</td>
+                        <td> <a href="#/topics" ng-click="get_Topic(topic._id)">{{topic.topic}}</a></td>
+                        <td><a href="#/users" ng-click="get_User(topic.user_name)">{{topic.user_name}}</a></td>
+                        <td>{{topic.posts.length}}</td>
+                  </tr>
+            </thead>
+      </table>
+      <h3>Add New Topic</h3>
+	<form role="form">
+            <div class="form-group">
+      		<label for="topic">Topic</label><br>
+                  <input type='text' name="topic" ng-model='new_topic.topic' class="form-control"><br>
+            </div>
+            <div class="form-group">
+                  <label for="description">Description</label><br>
+                  <textarea name="description" ng-model="new_topic.description" class="form-control" rows="5">Description</textarea><br>
+            </div>
+            <div class="form-group">
+                  <label for="category">Category</label><br>
+                  <select name="category" ng-model="new_topic.category" class="form-control">
+                  	<option value="HTML">HTML</option>
+                  	<option value="Javascript">Javascript</option>
+                  	<option value="Ruby">Ruby</option>
+                  	<option value="Python">Pyhton</option>
+                  	<option value="Php">Php</option>
+                  	<option value="iOs">iOs</option>
+                  </select><br>
+            </div>
+            <input type='submit' value='Submit' ng-click='addTopic(users._id, users.name)' class="btn btn-success">
+	</form>
+</div>
+</div>
+<div ng-show="!users">
+      <a href="#" class="btn btn-info">Login To Continue</a>
+</div>
+
+ 
+  

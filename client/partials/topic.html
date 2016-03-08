@@ -1,0 +1,59 @@
+<div ng-show="users" ng-controller="topicController">
+    <div class="container">
+        <div class="pull-right">
+            <a href="#/dashboard" class="btn btn-danger">Go Back</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="text-center bg-info">{{topic.topic}}</h2>
+        <h3 class="text-center text-success">Description</h3>
+        <h4 class="text-center">{{topic.description}}</h4>
+            <div ng-if="topic.user_name === users.name" class="pull-right">
+                <h4>Topic posted by, <a href="#/users" ng-click="get_User(users.name)">You</a></h4><br><br>
+            </div>
+    </div>
+    <div ng-if="topic.user_name !== users.name" class="pull-right">
+        <h4>Posted by, 
+            <a href="#/users" ng-click="get_User(topic.user_name)">{{topic.user_name}}
+            </a>
+        </h4>
+    </div>
+<div ng-controller="postController">
+    <label>Post Answer</label>
+        <form role="form">
+            <div class="form-group">
+                <textarea name="post" ng-model="new_post.post" class="form-control" rows="4"></textarea>
+            </div>
+            <input type='submit' value='Submit' ng-click='addPost(users._id, topic._id, users.name)' class="btn btn-success">
+        </form>
+        <br><br>
+        <div ng-repeat="x in topic.posts track by $index">
+            <h4>
+                <a href="#/users" ng-click="get_User(x.user_name)">{{x.user_name}}</a> 
+                : {{x.post}}
+            </h4>
+            <p>
+                <a href="" ng-click="upVote(x._id)" class="btn btn-primary btn-sm">Likes:{{x.up_vote}}</a>  
+                <a href="" ng-click="downVote(x._id)" class="btn btn-warning btn-sm">Dislikes:{{x.down_vote}}</a>
+            </p>
+            <ul ng-repeat="c in x.comments track by $index" class="list-group">
+                <li class="list-group-item">
+                    <a href="#/users" ng-click="get_User(c.user_name)">{{c.user_name}}</a>
+                    : {{c.comment}}
+                </li>
+            </ul>
+            <div ng-controller="commentController">
+                    <h3>Add Comment</h3>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea name="comment" ng-model="model.comment" class="form-control" rows="3"></textarea><br>
+                        </div>
+                        <input type="submit" value="Submit" ng-click="addComment(users._id, x._id, users.name)" class="btn btn-success">
+                    </form>
+            </div>
+        </div>
+</div>
+</div>
+<div ng-show="!users">
+    <a href="#" class="btn btn-info">Login To Continue</a>
+</div>

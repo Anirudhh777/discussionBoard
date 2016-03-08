@@ -1,0 +1,20 @@
+<div  ng-show="users">
+	<div class="container">
+		<div class="pull-right">
+		    <a href="#/dashboard" class="btn btn-danger">Go Back</a>
+		</div>
+	</div>
+	<h3 class="text-primary text-center">Users found</h3>
+	<div ng-repeat="i in user">
+		<h4 class="bg-info">{{i.name}}</h4><br>
+		<h5>Posted ..
+		Topics: {{i.topics.length}}
+		Posts: {{i.posts.length}}
+		Comments: {{i.comments.length}}
+		</h5>
+		<br><br>
+	</div>
+</div>
+<div ng-show="!users">
+      <a href="#" class="btn btn-info">Login To Continue</a>
+</div>
