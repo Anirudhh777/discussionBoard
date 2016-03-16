@@ -4,9 +4,9 @@ A Simple discussion board like <strong>Stack Overflow</strong> where user can re
 
 Requirement to Run on LocalHost
 
-Clone Repo or Download and Unzip
-Install Node if required https://nodejs.org/en/
-Open folder on Terminal
-Enter command "Node server.js"
-Open http://localhost:8007/ on browser window. 
+1)Clone Repo or Download and Unzip
+2)Install Node if required https://nodejs.org/en/
+3)Open folder on Terminal
+4)Enter command "Node server.js"
+5)Open http://localhost:8007/ on browser window. 
 
